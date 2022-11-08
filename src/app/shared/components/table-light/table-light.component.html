@@ -1,0 +1,19 @@
+<table class="table">
+  <!-- thead utile pour le référencement -->
+  <thead>
+      <!-- table row (ligne) -->
+      <tr>
+          <th scope="col">#</th>
+          <th *ngFor="let i of headers">{{i}}</th>
+          <!--   table header cells (th) -->
+
+          <!-- <th scope="col">titre 2 </th> -->
+      </tr>
+  </thead>
+  <tbody>
+
+    <ng-content></ng-content>
+
+    
+  </tbody>
+</table>

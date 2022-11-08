@@ -1,0 +1,34 @@
+<app-template-full-width
+  [titleEnfant]="titleParent"
+  *ngIf="collection$ | async as collection"
+>
+  <!-- ajouter un tableau -->
+  <app-table-light [headers]="headers">
+    <tr *ngFor="let i of collection">
+      <th scope="row">{{ i.id }}</th>
+      <!--  table data cells (td)-->
+      <td>   <app-icon-edit
+        (click)="goToEdit(i)"></app-icon-edit>
+        <app-icon-delete
+        (click)="goToDelete(i)"></app-icon-delete></td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.tva }}</td>
+      <td>{{ i.totalCaHt }}</td>
+      <td>{{ i.comment }}</td>
+      <td appState [etat]="i.state">
+        <select (change)="changeState(i,$event)" >
+          <option *ngFor="let state of states" [selected]="i.state === state" [value]="state" >{{state}}</option>
+          <!-- <option value="CANCELLED">CANCELLED</option>
+          <option value="OPTION">OPTION</option>
+          <option value="CONFIRMED">CONFIRMED</option> -->
+        </select>
+      </td>
+    </tr>
+  </app-table-light>
+  <!-- envoyer collection avec @Input() -->
+  <!-- vérifier aussi dans app-table-light que vous recevez bien collection -->
+<app-btn
+styleBtn="btn btn-primary"
+route="add"
+label="Ajouter"></app-btn>
+</app-template-full-width>

@@ -1,0 +1,6 @@
+<app-template-full-width titleEnfant="Modifier une commande">
+
+  <app-form-order [init]="item"
+  *ngIf="item$ | async as item"
+  (submitted)="onEdit($event)"></app-form-order>
+</app-template-full-width>
